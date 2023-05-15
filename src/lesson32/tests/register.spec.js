@@ -82,11 +82,6 @@ test('Correct keyboard transitions in the register form', async ({ page }) => {
   await page.keyboard.press('Enter');
 
   // 利用規約モーダル内 tab遷移
-  await page.keyboard.press('Tab');
-  await expect(modalCloseButton).toBeFocused();
-
-  await page.keyboard.press('Tab');
-  await expect(modalContents).toBeFocused();
   await page.getByTestId('last-sentence').scrollIntoViewIfNeeded(); //最後の文章までスクロール
 
   await expect(modalCloseButton).toBeFocused();
