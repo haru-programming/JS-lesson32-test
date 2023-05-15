@@ -89,7 +89,6 @@ test('Correct keyboard transitions in the register form', async ({ page }) => {
   await expect(modalContents).toBeFocused();
   await page.getByTestId('last-sentence').scrollIntoViewIfNeeded(); //最後の文章までスクロール
 
-  await page.keyboard.press('Tab');
   await expect(modalCloseButton).toBeFocused();
   await page.keyboard.press('Enter');
 
