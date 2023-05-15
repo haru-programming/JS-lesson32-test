@@ -51,6 +51,7 @@ test('Correct keyboard transitions in the register form', async ({ page }) => {
     'Password ( 8文字以上の大小英数字 )必須'
   );
   const modalCloseButton = page.getByRole('button', { name: 'Close' });
+  const modalContents = page.getByTestId('modal-contents');
   const submitButton = page.getByRole('button', { name: 'Create My Account' });
 
   // form tab遷移
@@ -81,6 +82,11 @@ test('Correct keyboard transitions in the register form', async ({ page }) => {
   await page.keyboard.press('Enter');
 
   // 利用規約モーダル内 tab遷移
+  await page.keyboard.press('Tab');
+  await expect(modalCloseButton).toBeFocused();
+
+  await page.keyboard.press('Tab');
+  await expect(modalContents).toBeFocused();
   await page.getByTestId('last-sentence').scrollIntoViewIfNeeded(); //最後の文章までスクロール
 
   await page.keyboard.press('Tab');
@@ -90,6 +96,7 @@ test('Correct keyboard transitions in the register form', async ({ page }) => {
   // submitボタン tab遷移
   await expect(submitButton).toBeFocused();
   page.keyboard.press('Enter');
+
   await expect(page.getByTestId('complete-text')).toContainText(
     'アカウント登録が完了しました。'
   );
