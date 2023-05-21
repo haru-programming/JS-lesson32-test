@@ -9,15 +9,14 @@
     "test": "playwright test",
     "test:report": "playwright show-report",
     "fmt": "prettier --write *.js",
-    "lint": "eslint --fix *.js",
+    "lint": "eslint 'src/**/*.js'",
     "fix": "npm run fmt && npm run lint",
     "prepare": "husky install",
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.js": [
-      "prettier --write *.js",
-      "eslint --fix *.js"
+      "prettier --write *.js"
     ]
   },
   "devDependencies": {
